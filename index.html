@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VOID_ARCHITECT // Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#191c1e",
+                        "tertiary-fixed": "#e1e2e4",
+                        "inverse-surface": "#e4e1e7",
+                        "on-tertiary": "#2e3132",
+                        "outline-variant": "#3a494b",
+                        "primary-container": "#00f2fe",
+                        "on-secondary-container": "#ddcdff",
+                        "on-secondary": "#3c0090",
+                        "surface": "#131317",
+                        "primary-fixed": "#6ff6ff",
+                        "primary-fixed-dim": "#00dce6",
+                        "tertiary": "#f7f7f9",
+                        "surface-bright": "#39393d",
+                        "on-tertiary-container": "#5e6062",
+                        "inverse-on-surface": "#303034",
+                        "surface-tint": "#00dce6",
+                        "on-secondary-fixed": "#23005b",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c5c6c8",
+                        "primary": "#e0fdff",
+                        "surface-container-high": "#2a292e",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "surface-container": "#1f1f23",
+                        "surface-dim": "#131317",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary-container": "#7000ff",
+                        "surface-container-lowest": "#0e0e12",
+                        "secondary-fixed": "#e9ddff",
+                        "on-primary": "#00373a",
+                        "on-primary-container": "#006a70",
+                        "tertiary-container": "#dadbdd",
+                        "surface-container-highest": "#353439",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "background": "#131317",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "surface-variant": "#353439",
+                        "outline": "#849495",
+                        "secondary": "#d1bcff",
+                        "surface-container-low": "#1b1b1f",
+                        "on-error": "#690005",
+                        "on-surface": "#e4e1e7",
+                        "inverse-primary": "#00696f",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "on-primary-fixed-variant": "#004f53",
+                        "on-background": "#e4e1e7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0B0B0F;
+            color: #e4e1e7;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background-color: rgba(19, 19, 23, 0.6);
+            border: 1px solid rgba(156, 163, 175, 0.1);
+        }
+
+        .neon-border-primary {
+            border: 1px solid #00f2fe;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: #00f2fe;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px #00f2fe, 0 0 30px #00f2fe;
+            transition: transform 0.1s ease-out;
+        }
+
+        .cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(0, 242, 254, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease-out;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #00f2fe; border-radius: 10px; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+            background: linear-gradient(0deg, rgba(0, 242, 254, 0) 0%, rgba(0, 242, 254, 0.05) 50%, rgba(0, 242, 254, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 6s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+
+        .typing-container::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .grid-bg {
+            background-image: linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<div class="custom-cursor" id="cursor"></div>
+<div class="cursor-follower" id="follower"></div>
+<!-- STITCH_SHADER_START:ANIMATION_1 class="fixed inset-0 w-full h-full z-[-1] opacity-40" -->
+<div class="fixed inset-0 w-full h-full z-[-1] opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_1" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_1');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+
+    // Create a subtle grid pattern
+    vec2 grid = fract(uv * 40.0 + 0.1 * sin(u_time * 0.5));
+    float line = smoothstep(0.0, 0.02, grid.x) * smoothstep(1.0, 0.98, grid.x) *
+                 smoothstep(0.0, 0.02, grid.y) * smoothstep(1.0, 0.98, grid.y);
+
+    // Animated glowing waves
+    float wave = sin(uv.x * 10.0 + u_time) * 0.5 + 0.5;
+    wave *= cos(uv.y * 5.0 - u_time * 0.7) * 0.5 + 0.5;
+
+    // Colors
+    vec3 bg = vec3(0.043, 0.043, 0.059); // #0B0B0F
+    vec3 accent1 = vec3(0.0, 0.95, 0.99); // #00F2FE (Cyan)
+    vec3 accent2 = vec3(0.44, 0.0, 1.0);  // #7000FF (Purple)
+
+    vec3 color = bg;
+    color += mix(accent1, accent2, uv.x) * wave * 0.15;
+    color += (1.0 - line) * 0.02; // Very subtle grid lines
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_1 -->
+<div class="fixed inset-0 grid-bg pointer-events-none z-[-1]"></div>
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20 h-20">
+<div class="flex justify-between items-center px-margin-desktop h-full w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-primary drop-shadow-[0_0_10px_rgba(0,242,254,0.5)]">
+                VOID_ARCHITECT
+            </div>
+<nav class="hidden md:flex gap-12 items-center">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[1px] after:bg-primary after:shadow-[0_0_8px_#00f2fe] hover:text-primary transition-all duration-300" href="#hero">Hero</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all duration-300" href="#about">About</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all duration-300" href="#experience">Exp</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all duration-300" href="#projects">Projects</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all duration-300" href="#skills">Skills</a>
+<a class="px-6 py-2 bg-primary-container/10 border border-primary-container text-primary font-label-sm text-label-sm uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all duration-500" href="#contact">Connect</a>
+</nav>
+</div>
+</header>
+<main class="relative z-10">
+<section class="min-h-screen flex flex-col justify-center px-margin-desktop max-w-container-max mx-auto relative pt-20" id="hero">
+<div class="space-y-6 max-w-4xl">
+<div class="inline-block px-4 py-1 glass-panel border-primary/20 text-primary font-label-sm text-label-sm uppercase tracking-[0.2em] mb-4">
+                    Neural Link Established
+                </div>
+<h1 class="font-display-lg text-display-lg leading-tight md:text-display-lg text-on-surface">
+                    Hello, I am <span class="text-primary-container">Alex Rivers</span>
+</h1>
+<div class="h-12 flex items-center">
+<span class="font-headline-md text-headline-md text-on-surface-variant typing-container" id="typing-text"></span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    B.Tech in CSE (AI &amp; ML). Specializing in predictive modeling, deep learning, and interactive data visualization. Building the infrastructure of tomorrow.
+                </p>
+<div class="flex flex-wrap gap-6 pt-8">
+<a class="px-10 py-4 bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(0,242,254,0.6)] transition-all duration-300" href="#projects">View Work</a>
+<a class="px-10 py-4 border border-primary text-primary font-label-sm text-label-sm uppercase tracking-widest font-bold hover:bg-primary/5 transition-all duration-300" href="#contact">Contact Me</a>
+</div>
+</div>
+<div class="absolute bottom-20 right-margin-desktop flex flex-col gap-6 items-center">
+<div class="w-[1px] h-24 bg-gradient-to-t from-primary to-transparent"></div>
+<div class="flex flex-col gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</a>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary-container/20 blur-3xl group-hover:bg-primary-container/30 transition-all duration-700"></div>
+<div class="relative glass-panel p-4 aspect-square max-w-md mx-auto">
+<div class="w-full h-full bg-surface-container overflow-hidden relative">
+<img class="w-full h-full object-cover mix-blend-screen opacity-80" data-alt="A futuristic AI-themed portrait of a digital workspace with holographic data overlays and neon circuits flowing through glass interfaces. The aesthetic is clean, sharp, and minimalist, utilizing deep obsidian blacks and glowing cyan accents to evoke high-end technologic luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAYO4algek6pnOEBaD5yoy21L_xboy34ppipYOzCq9T7KMfyJ4r2HWlyS5Tg1qz5LcpZWsW_1G96lFehJSKqa6i2KIWyYgyUvDFfAJVcvscaS9f95zkcdqZjgbnDa-1yNbE7_n66krfAyyNkitg0rPMmkXwFOQETV3b6UJCTZpV9eMyIazEYhOjQrRy0f8CKUOHhNvyn99MSiNAasu9WrPqN4yyCCBul_CgTbS_t6k_cjdm2k1MLag"/>
+<div class="absolute inset-0 border-[0.5px] border-primary-container/30"></div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Synthetic Intelligence</h2>
+<div class="h-1 w-20 bg-primary-container mb-8"></div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            I am an architect of algorithms, dedicated to bridges between human intuition and machine logic. My approach focuses on 'Void' design—stripping away the unnecessary to reveal the raw data-driven truth beneath.
+                        </p>
+</div>
+<div class="glass-panel p-8 border-l-4 border-l-primary-container">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">B.Tech in CSE - AI &amp; ML</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest">Global Institute of Technology</p>
+</div>
+<div class="bg-primary-container/20 text-primary px-3 py-1 font-label-sm text-label-sm border border-primary-container animate-pulse shadow-[0_0_10px_rgba(0,242,254,0.3)]">
+                                GPA: 10.0/10.0
+                            </div>
+</div>
+<p class="text-on-surface-variant text-sm">Focused on advanced neural networks, computational statistics, and ethical AI integration.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="experience">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-16 text-center">Protocol History</h2>
+<div class="relative max-w-4xl mx-auto pl-8 border-l border-outline-variant/30">
+<div class="absolute top-0 left-[-1px] w-[1px] h-full bg-gradient-to-b from-primary-container via-primary-container to-transparent opacity-50" id="scroll-timeline"></div>
+<div class="mb-16 relative">
+<div class="absolute w-4 h-4 rounded-full bg-primary-container left-[-40px] top-2 border-4 border-surface shadow-[0_0_10px_#00f2fe]"></div>
+<div class="glass-panel p-8 hover:bg-surface-container transition-colors duration-500 group">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">ML Research Intern</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">2023 - Present</span>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="bolt">bolt</span>
+<span class="text-on-surface-variant">Developed predictive models for high-frequency trading data using LSTM architectures.</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="bolt">bolt</span>
+<span class="text-on-surface-variant">Optimized hyper-parameters for massive datasets, reducing training time by 40%.</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="bolt">bolt</span>
+<span class="text-on-surface-variant">Authored 2 research papers on generative adversarial networks in medical imaging.</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="bolt">bolt</span>
+<span class="text-on-surface-variant">Collaborated with cross-functional teams to deploy cloud-native AI services.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="projects">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-16">Active Deployments</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="group relative overflow-hidden glass-panel flex flex-col hover:scale-[1.02] transition-all duration-500">
+<div class="h-64 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A high-contrast visual representing a complex neural network structure. Intricate white filaments of light connecting nodes against a dark, foggy background with subtle deep purple and cyan flares. The image emphasizes digital connectivity and structured complexity in a minimalist sci-fi style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwM0UDSGOcySZtFWqO8Nh0oBK7qoT9buoW01Z_vsVgZCj7-LqtI5ng6QZLiL5T1G3-icIS3lCA8I7BT50vr-qQwpGOr2py2qlrUq-bxfLdfghKoFhqU7XkGF01rNEMwxLziGR1AqXWV0q_6kVh38zj8MMFxyXV0uKJcTXUT291C5ndOF8IIMDj3XktOsq8OPE3acCwHpNtajuVh6dXa-WMSpJUHeP7BvpinUAWnVEafHZNZBQhh-G2"/>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary">Neural Nexus</h3>
+<span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-[10px] uppercase tracking-widest text-on-surface-variant">Web App</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            A real-time data orchestration platform designed for neural network monitoring. Implemented using React and FastAPI with a micro-services architecture. Achieved sub-50ms latency for streaming analytics.
+                        </p>
+<div class="flex gap-4 pt-4">
+<span class="text-label-sm font-label-sm text-primary-container">REACT</span>
+<span class="text-label-sm font-label-sm text-primary-container">FASTAPI</span>
+<span class="text-label-sm font-label-sm text-primary-container">WEBSOCKETS</span>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden glass-panel flex flex-col hover:scale-[1.02] transition-all duration-500">
+<div class="h-64 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Abstract data visualization showing vertical light pulses of varying heights across a dark digital horizon. The aesthetic uses a restricted palette of vibrant cyan and deep violet against an obsidian background. It conveys a sense of rhythmic movement and precise data measurement in a futuristic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJDzxtM_5RaM1PziorJviVIDm2qTY8zUWyXmDjKDEbjdG_nQ_2xgFjOgEiUNt2L1h9IG-GEbVdVRI3-dlz_HT731sq48P-dhqhLhM2dmNYRg9tuaU5lChlZBeOta833GLt0dd1x1IWdPJqH2hPGSUu59PQvJSZPuRIsenfpIjZ-eu2XCUeSq_dyPd7tUflaBmcJcjCNN6-gXwJdVqBm1XDgOcHy1w9hvuRrOj92avY1rT4dr0Nbxld"/>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary">Predictive Pulse</h3>
+<span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-[10px] uppercase tracking-widest text-on-surface-variant">AI Data App</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            An AI-powered diagnostic tool for time-series forecasting. Leverages Streamlit for interactive visualization and Prophet for trend analysis. Used by research teams to identify anomalies in server cluster performance.
+                        </p>
+<div class="flex gap-4 pt-4">
+<span class="text-label-sm font-label-sm text-primary-container">PYTHON</span>
+<span class="text-label-sm font-label-sm text-primary-container">STREAMLIT</span>
+<span class="text-label-sm font-label-sm text-primary-container">PANDAS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="skills">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-16 text-center">Core Schematics</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<div class="glass-panel p-8 space-y-6">
+<h3 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary-container border-b border-primary-container/20 pb-4">Programming</h3>
+<div class="space-y-4">
+<div class="group">
+<div class="flex justify-between text-xs mb-2"><span>PYTHON</span><span>95%</span></div>
+<div class="w-full h-1 bg-surface-container">
+<div class="h-full bg-primary-container w-[95%] shadow-[0_0_10px_#00f2fe]"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between text-xs mb-2"><span>C++</span><span>95%</span></div>
+<div class="w-full h-1 bg-surface-container">
+<div class="h-full bg-primary-container w-[95%] shadow-[0_0_10px_#00f2fe]"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between text-xs mb-2"><span>MYSQL</span><span>90%</span></div>
+<div class="w-full h-1 bg-surface-container">
+<div class="h-full bg-primary-container w-[90%] shadow-[0_0_10px_#00f2fe]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 space-y-6">
+<h3 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary-container border-b border-primary-container/20 pb-4">Web Development</h3>
+<div class="space-y-4">
+<div class="group">
+<div class="flex justify-between text-xs mb-2"><span>HTML/CSS</span><span>75%</span></div>
+<div class="w-full h-1 bg-surface-container">
+<div class="h-full bg-primary-container w-[75%] shadow-[0_0_10px_#00f2fe]"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between text-xs mb-2"><span>JAVASCRIPT</span><span>55%</span></div>
+<div class="w-full h-1 bg-surface-container">
+<div class="h-full bg-primary-container w-[55%] shadow-[0_0_10px_#00f2fe]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 space-y-6">
+<h3 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-primary-container border-b border-primary-container/20 pb-4">Tools</h3>
+<div class="flex flex-wrap gap-4">
+<div class="px-4 py-2 border border-outline-variant/30 bg-surface-container hover:border-primary-container transition-colors">FIGMA</div>
+<div class="px-4 py-2 border border-outline-variant/30 bg-surface-container hover:border-primary-container transition-colors">GITHUB</div>
+<div class="px-4 py-2 border border-outline-variant/30 bg-surface-container hover:border-primary-container transition-colors">DOCKER</div>
+<div class="px-4 py-2 border border-outline-variant/30 bg-surface-container hover:border-primary-container transition-colors">TENSORFLOW</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="achievements">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-16">Distinction Logs</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-panel p-8 flex gap-6 items-center group">
+<div class="w-16 h-16 bg-primary-container/10 border border-primary-container flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary-container transition-all duration-500">
+<span class="material-symbols-outlined text-4xl" data-icon="emoji_events">emoji_events</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Hackathon Winner</h3>
+<p class="text-on-surface-variant text-sm">1st Place in Regional AI-Innovate Hackathon 2023 for Autonomous Drone Navigation.</p>
+</div>
+</div>
+<div class="glass-panel p-8 flex gap-6 items-center group">
+<div class="w-16 h-16 bg-primary-container/10 border border-primary-container flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary-container transition-all duration-500">
+<span class="material-symbols-outlined text-4xl" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Academic Honors</h3>
+<p class="text-on-surface-variant text-sm">Recipient of the Dean's Merit Scholarship for 4 consecutive years.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal mb-20" id="contact">
+<div class="text-center max-w-2xl mx-auto space-y-6 mb-16">
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg text-on-surface">Initiate Contact</h2>
+<p class="text-on-surface-variant">Ready to integrate? Reach out for collaboration or inquiries via the encrypted link below.</p>
+<div class="flex flex-col md:flex-row justify-center gap-8 pt-4">
+<button class="flex items-center gap-3 px-6 py-3 glass-panel hover:bg-primary-container/10 transition-colors group" onclick="copyToClipboard('rivers.dev@neural.void')">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<span class="font-label-sm text-label-sm">rivers.dev@neural.void</span>
+<span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</button>
+<button class="flex items-center gap-3 px-6 py-3 glass-panel hover:bg-primary-container/10 transition-colors group" onclick="copyToClipboard('+1 234 567 890')">
+<span class="material-symbols-outlined text-primary" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-label-sm text-label-sm">+1 234 567 890</span>
+<span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<form class="max-w-xl mx-auto glass-panel p-10 space-y-8">
+<div class="space-y-2">
+<label class="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant">Identity</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant/30 border-t-0 border-x-0 focus:ring-0 focus:border-primary-container transition-all px-0 py-3 text-on-surface" placeholder="Your Name" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant">Neural Address</label>
+<input class="w-full bg-surface-container-low border-b border-outline-variant/30 border-t-0 border-x-0 focus:ring-0 focus:border-primary-container transition-all px-0 py-3 text-on-surface" placeholder="Email Address" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant">Manifest</label>
+<textarea class="w-full bg-surface-container-low border-b border-outline-variant/30 border-t-0 border-x-0 focus:ring-0 focus:border-primary-container transition-all px-0 py-3 text-on-surface resize-none" placeholder="Your Message..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-widest font-bold hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all" type="submit">Submit Protocol</button>
+</form>
+</section>
+</main>
+<footer class="bg-surface border-t border-outline-variant/10 py-16 w-full">
+<div class="flex flex-col items-center gap-8 w-full px-margin-desktop">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tighter">VOID_ARCHITECT</div>
+<div class="flex gap-12 font-label-sm text-label-sm tracking-[0.2em] text-on-tertiary-container">
+<a class="hover:text-primary transition-colors duration-300" href="#">GITHUB</a>
+<a class="hover:text-primary transition-colors duration-300" href="#">LINKEDIN</a>
+<a class="hover:text-primary transition-colors duration-300" href="#">TWITTER</a>
+</div>
+<div class="text-on-tertiary-container font-label-sm text-[10px] opacity-40 uppercase tracking-[0.3em]">
+                © 2024 VOID_ARCHITECT // CREATED IN THE NEURAL LINK
+            </div>
+</div>
+</footer>
+<script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            follower.style.transform = `translate3d(${e.clientX - 12}px, ${e.clientY - 12}px, 0)`;
+        });
+
+        // Dynamic Typing Effect
+        const typingText = document.getElementById('typing-text');
+        const phrases = ["AI/ML Engineer", "Data Scientist", "Problem Solver"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+        type();
+
+        // Scroll Reveal Logic
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Timeline Scroll Progress
+        window.addEventListener('scroll', () => {
+            const timeline = document.getElementById('scroll-timeline');
+            const expSection = document.getElementById('experience');
+            const rect = expSection.getBoundingClientRect();
+            const scrollPercent = Math.max(0, Math.min(100, ((-rect.top + 300) / rect.height) * 100));
+            timeline.style.height = `${scrollPercent}%`;
+        });
+
+        // Click to Copy Utility
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Neural data copied to buffer: ' + text);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
